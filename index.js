@@ -7,10 +7,18 @@ const app = express();
 //setting up the port
 const port = 9000;
 
+//for using static files
+app.use(express.static('./assets'));
+
 //requiring express-ejs-layouts
 const expresLayout = require('express-ejs-layouts');
 // use express layouts
 app.use(expresLayout);
+
+// extract style and scripts from sub pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true); 
+
 
 // use expres router
 app.use('/', require('./routes/index'));
