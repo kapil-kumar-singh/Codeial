@@ -1,5 +1,8 @@
-//requiring express
+// requiring express
 const express = require('express');
+
+// requiring express
+const cookieParser = require('cookie-parser');
 
 //firing up express
 const app = express();
@@ -9,6 +12,9 @@ const port = 9000;
 
 //requiring configuration for setting up the database to be accessed by mongoose
 const db = require('./config/mongoose');
+
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 //for using static files
 app.use(express.static('./assets'));
