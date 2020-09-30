@@ -1,6 +1,5 @@
 //requiring express
 const express = require('express');
-const router = require('./routes');
 
 //firing up express
 const app = express();
@@ -10,6 +9,10 @@ const port = 9000;
 
 // use expres router
 app.use('/', require('./routes/index'));
+
+// setup the view engine
+app.set('view engine', 'ejs');
+app.set('views', './views'); 
 
 //creating a listener to firing up the server on port
 app.listen(port, function(err){
