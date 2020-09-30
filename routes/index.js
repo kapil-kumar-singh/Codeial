@@ -13,6 +13,7 @@ router.get('/', homeController.home);
 
 // for any further routes , access from here
 // router.use('/routerName', require('./routerFile'));
+router.use('/users', require('./users'));
 
 
 // export the router 
