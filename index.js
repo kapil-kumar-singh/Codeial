@@ -1,13 +1,6 @@
-// requiring express
 const express = require('express');
-
-// requiring express
 const cookieParser = require('cookie-parser');
-
-//firing up express
 const app = express();
-
-//setting up the port
 const port = 9000;
 
 //requiring configuration for setting up the database to be accessed by mongoose
@@ -19,6 +12,15 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
 const MongoStore = require('connect-mongo')(session);
+const sassMiddleware = require('node-sass-middleware');
+
+app.use(sassMiddleware({
+    src : "./assets/scss",
+    dest : "./assets/css",
+    debug: true,
+    outputStyle: 'expanded',
+    prefix: '/css'
+}));
 
 
 app.use(express.urlencoded());
@@ -50,7 +52,7 @@ app.use(session({
     saveUninitialized : false,
     resave: false,
     cookie: {
-        maxAge: (1000*60*2)
+        maxAge: (1000*60*5)
     },
     store: new MongoStore({
         mongooseConnection: db,

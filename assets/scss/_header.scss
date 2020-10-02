@@ -1,0 +1,25 @@
+header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    background-color: whitesmoke;
+    border-bottom: 2px solid darkgray;
+    padding: 0px 25px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    #logo-heading{
+        font-size: 4.5vh;
+        color: rgb(9, 0, 139);
+    }
+    ul{
+        display: flex;
+        list-style: none;
+        li{
+            display: block;
+            margin: 0px;
+            font-size: 4vh;
+            margin: 0px 10px;
+            color: darkslateblue;
+        }
+    }
+}
