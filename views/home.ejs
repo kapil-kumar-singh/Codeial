@@ -1,4 +1,12 @@
 <link rel="stylesheet" href="/css/home.css">
-    <h1>
-      Codeial | <%= title %>
-    </h1>
+<h1>
+  Codeial | <%= title %>
+</h1>
+
+<section id='feed-post'>
+  <h3>Post</h3>
+  <form action="/posts/create" method="post">
+    <textarea name="content" id="" cols="35" rows="5" placeholder="Type Here..."></textarea>
+    <input type="submit" value="Post">
+  </form>
+</section>
