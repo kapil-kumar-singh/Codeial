@@ -6,7 +6,15 @@ module.exports.home = function(req, res){
     // res.cookie('hbjh', 1);
 
     // populate the user of each post
-    Post.find({}).populate('user').exec(function(err, post){
+    Post.find({})
+    .populate('user')
+    .populate({
+        path : 'comments',
+        populate: {
+            path : "user"
+        }
+    })
+    .exec(function(err, post){
         if(err){console.log('erroe in finding post',err); return;};
         return res.render('home', {
             title: 'Home | Codeial',
