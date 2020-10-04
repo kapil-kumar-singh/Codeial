@@ -6,6 +6,7 @@ const usersController = require('../controllers/users_controller');
 const { chechAuthentication } = require('../config/passport-local-strategy');
 
 router.get('/profile/:id', passport.chechAuthentication, usersController.profile);
+router.post('/update/:id', passport.chechAuthentication, usersController.update);
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
 router.post('/create', usersController.create);
