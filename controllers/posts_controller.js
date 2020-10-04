@@ -14,12 +14,10 @@ module.exports.create = function(req, res){
 module.exports.destroy = function(req, res){
     Post.findById(req.params.id, function(err, post){
         //  .id means converting the object id into string
-        
-        console.log(post);
         if(post.user == req.user.id){
             post.remove();
 
-            Comment.deleteMany({post : req.param.id}, function(err){
+            Comment.deleteMany({post : req.params.id}, function(err){
                 return res.redirect('back');
             })
         }else{
