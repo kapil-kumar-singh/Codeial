@@ -13,14 +13,15 @@
     </p>
     <div class="post-comments">
       <% if(locals.user) { %>
-        <form action="/comments/create" method="post">
+        <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
+        <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="post" >
           <input type="text" name="content" placeholder="Type Here to add comment..." required>
           <input type="hidden" name="post" value="<%= post._id %>">
           <input type="submit" value="Add Comment">
         </form>
       <% } %>
       <div id='post-comment-list'>
-        <ul id='post-comment-<%=post._id%>'>
+        <ul id='post-comments-<%=post._id%>'>
           <% for(comment of post.comments){ %>
             <%- include('_comment') -%>
           <%}%>
