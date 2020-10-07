@@ -10,15 +10,53 @@ module.exports.profile = function(req, res){
     });
 };
 
-module.exports.update = function(req, res){
+// module.exports.update = function(req, res){
+//     if(req.user.id == req.params.id){
+//         User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+//             req.flash('success', "Updated!")
+//             return res.redirect('back');
+//         });
+//     }else{
+//         req.flash('error', "Unauthorized");
+//         return res.status(401).send('Unauthorized');
+//     }
+// };
+
+
+module.exports.update = async function(req, res){
+
     if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+        try{
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req, res, function(err){
+
+                if(err){console.log('multar error :', err)}
+                user.name = req.body.name;
+                user.email = req.body.email;
+
+                console.log(req.file);
+                if(req.file){
+                    // this is saving the path of the uploaded file into the avatar field in the user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+
+                user.save();
+                return res.redirect('back');
+
+            })
+        }catch(err){
+            req.flash('error', err);
             return res.redirect('back');
-        });
+        }
+
     }else{
+        req.flash('error', "Unauthorized");
         return res.status(401).send('Unauthorized');
     }
-};
+}
+
+
+
 
 
 // render the sign-in page
