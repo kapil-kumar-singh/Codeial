@@ -31,6 +31,9 @@ app.use(cookieParser());
 //for using static files
 app.use(express.static('./assets'));
 
+// make the uploads path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 //requiring express-ejs-layouts
 const expresLayout = require('express-ejs-layouts');
 // use express layouts
