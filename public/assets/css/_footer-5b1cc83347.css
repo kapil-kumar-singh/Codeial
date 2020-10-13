@@ -1,0 +1,16 @@
+footer {
+  background-color: #6e6e68;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+
+footer a {
+  font-size: xx-large;
+  color: white;
+  padding: 0px 8px;
+}
+
+footer #navi a {
+  color: #95baff;
+}
