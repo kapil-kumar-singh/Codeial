@@ -1,7 +1,6 @@
-//requiring mongoose to set up connection with database
 const mongoose = require('mongoose');
-//setting up connection
-mongoose.connect('mongodb://localhost/codeial_development');
+const env = require('./environment');
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 
 //setting up connection
