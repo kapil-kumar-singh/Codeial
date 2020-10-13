@@ -3,6 +3,7 @@ const env = require('./config/environment');
 const logger =require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
+require('./config/view-helper')(app);
 const port = 9000;
 
 //requiring configuration for setting up the database to be accessed by mongoose
